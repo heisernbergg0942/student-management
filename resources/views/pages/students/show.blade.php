@@ -1,83 +1,46 @@
 @extends('layouts.app')
 
-@section('title', 'Student Detail')
-
-@section('parent', 'Students')
-
+@section('title', 'Student Management')
+@section('parent', 'Student Management')
 @section('page', 'Student Detail')
 
 @section('content')
+    <div class="rounded-2xl border border-gray-200 bg-white p-6">
+        <div class="space-y-6">
+            <div>
+                <label class="text-sm text-gray-500">ID</label>
+                <p class="mt-1 text-lg font-medium text-gray-800">{{ $student->id }}</p>
+            </div>
 
-<div class="max-w-4xl space-y-6">
+            <div>
+                <label class="text-sm text-gray-500">Student Name</label>
+                <p class="mt-1 text-lg font-medium text-gray-800">{{ $student->name }}</p>
+            </div>
 
-    <div class="flex justify-between items-center">
-        <div>
-            <h1 class="text-2xl font-bold text-gray-800">
-                {{ $student['name'] }}
-            </h1>
+            <div>
+                <label class="text-sm text-gray-500">Email</label>
+                <p class="mt-1 text-lg font-medium text-gray-800">{{ $student->email }}</p>
+            </div>
 
-            <p class="text-sm text-gray-500 mt-1">
-                Student ID: {{ $student['id'] }}
-            </p>
+            <div>
+                <label class="text-sm text-gray-500">Phone</label>
+                <p class="mt-1 text-lg font-medium text-gray-800">{{ $student->phone ?? 'N/A' }}</p>
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-500">Gender</label>
+                <p class="mt-1 text-lg font-medium text-gray-800">{{ $student->gender?->name }}</p>
+            </div>
+
+            <div class="flex justify-end gap-3 border-t border-gray-200 pt-4">
+                <a href="{{ route('students.index') }}" class="rounded-full bg-gray-500 px-5 py-2 text-white hover:bg-gray-600">
+                    Back
+                </a>
+
+                <a href="{{ route('students.edit', $student) }}" class="rounded-full bg-primary px-5 py-2 text-white hover:bg-secondary">
+                    Edit Student
+                </a>
+            </div>
         </div>
-
-        <x-button :href="route('students.index')" variant="secondary">
-            Back
-        </x-button>
     </div>
-
-    <div class="bg-white rounded-2xl border border-gray-200 p-6">
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <div>
-                <p class="text-sm text-gray-500">Full Name</p>
-                <p class="font-semibold text-gray-800 mt-1">
-                    {{ $student['name'] }}
-                </p>
-            </div>
-
-            <div>
-                <p class="text-sm text-gray-500">Email</p>
-                <p class="font-semibold text-gray-800 mt-1">
-                    {{ $student['email'] }}
-                </p>
-            </div>
-
-            <div>
-                <p class="text-sm text-gray-500">Phone</p>
-                <p class="font-semibold text-gray-800 mt-1">
-                    {{ $student['phone'] }}
-                </p>
-            </div>
-
-            <div>
-                <p class="text-sm text-gray-500">Gender</p>
-                <p class="font-semibold text-gray-800 mt-1">
-                    {{ $student['gender'] }}
-                </p>
-            </div>
-
-            <div>
-                <p class="text-sm text-gray-500">Class</p>
-                <p class="font-semibold text-gray-800 mt-1">
-                    {{ $student['class'] }}
-                </p>
-            </div>
-
-            <div>
-                <p class="text-sm text-gray-500">Status</p>
-                <div class="mt-2">
-                    @include('pages.students.partials.status', [
-                        'status' => $student['status']
-                    ])
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
 @endsection

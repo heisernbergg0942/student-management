@@ -52,6 +52,11 @@
         </header>
 
         <main class="p-8">
+            @if (session('success'))
+            <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-700">
+                {{ session('success') }}
+            </div>
+        @endif
             @yield('content')
         </main>
 

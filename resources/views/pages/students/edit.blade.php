@@ -2,12 +2,13 @@
 
 @section('title', 'Student Management')
 @section('parent', 'Student Management')
-@section('page', 'Add New Student')
+@section('page', 'Update Student')
 
 @section('content')
     <div class="rounded-2xl border border-gray-200 bg-white p-6">
-        <form action="{{ route('students.store') }}" method="POST">
+        <form action="{{ route('students.update', $student) }}" method="POST">
             @csrf
+            @method('PUT')
 
             @include('pages.students.partials.form')
 
@@ -16,8 +17,8 @@
                     Cancel
                 </a>
 
-                <button type="submit" class="rounded-full bg-primary px-5 py-2 text-white hover:bg-secondary">
-                    Save Student
+                <button type="submit" class="rounded-full bg-yellow-500 px-5 py-2 text-white hover:bg-yellow-600">
+                    Update Student
                 </button>
             </div>
         </form>

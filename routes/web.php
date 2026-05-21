@@ -11,5 +11,4 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
-Route::resource('students', StudentController::class)
-    ->only(['index', 'create', 'show']);
+Route::resource('students', StudentController::class);
